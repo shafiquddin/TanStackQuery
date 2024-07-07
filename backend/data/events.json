@@ -34,5 +34,15 @@
         "time": "18:30",
         "location": "Learning Labs, Austin, TX",
         "image": "laptop-on-desk.jpg"
+    },
+    {
+        "id": "63",
+        "title": "Meetup",
+        "description": "job success party!",
+        "date": "2024-09-04",
+        "time": "19:00",
+        "location": "Degloor Naka Nanded",
+        "image": "meeting-networking.jpg"
     }
+   
 ]
