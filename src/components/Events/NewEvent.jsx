@@ -8,7 +8,7 @@ import ErrorBlock from '../UI/ErrorBlock.jsx';
 export default function NewEvent() {
   const navigate = useNavigate();
 
-  const { mutate, isError, isPending, error } = useMutation({
+  const { mutate, isError, isLoading, error } = useMutation({
     mutationFn: createNewEvent,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['events'] });
@@ -23,8 +23,8 @@ export default function NewEvent() {
   return (
     <Modal onClose={() => navigate('../')}>
       <EventForm onSubmit={handleSubmit}>
-        {isPending && <p>Submitting...</p>}
-        {!isPending && (
+        {isLoading && <p>Submitting...</p>}
+        {!isLoading && (
           <>
             <Link to="../" className="button-text">
               Cancel
@@ -38,7 +38,7 @@ export default function NewEvent() {
       {isError && (
         <ErrorBlock
           title="Failed to create event"
-          message={error.info?.message || 'Failed to create event. Please check your inputs and try again later.'}
+          message={error?.message || 'Failed to create event. Please check your inputs and try again later.'}
         />
       )}
     </Modal>
