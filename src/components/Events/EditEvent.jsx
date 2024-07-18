@@ -84,6 +84,6 @@ export const action = async ({ request, params }) => {
   const formData = await request.formData();
   const eventData = Object.fromEntries(formData.entries());
   await updateEvent({ event: eventData, id: params.id });
-  await queryClient.invalidateQueries(['events'])
+  await queryClient.invalidateQueries(['events',params.id])
   return redirect("../");
 }

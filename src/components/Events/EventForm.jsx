@@ -37,14 +37,22 @@ export default function EventForm({ inputData, onSubmit, children }) {
         />
       </p>
       {isPending && <p>Loading selectable images...</p>}
-      {isError && <ErrorBlock title="failed to fetch selectable images" message={error.info?.message || 'Please try again later'}/>}
-      {data && <div className="control">
-        <ImagePicker
-          images={data}
-          onSelect={handleSelectImage}
-          selectedImage={selectedImage}
+      {isError && (
+        <ErrorBlock
+          title="Failed to load selectable images"
+          message="Please try again later."
         />
-      </div>}
+      )}
+      {data && (
+        <div className="control">
+          <ImagePicker
+            images={data}
+            onSelect={handleSelectImage}
+            selectedImage={selectedImage}
+          />
+        </div>
+      )}
+
 
 
       <p className="control">
